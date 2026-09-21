@@ -72,6 +72,34 @@ class FirefoxBookmarksDeduplicatorTestSuite(unittest.TestCase):
         
         deduplicator_utils.directory_merge(bookmarks)
         self.assertEqual(len(bookmarks), 1)
+
+    def test_merge_duplicate_folder_without_children(self):
+        child = {"id": 3, "type": "text/x-moz-place", "uri": "https://example.com"}
+        bookmarks = [
+            {"id": 1, "title": "Same", "type": "text/x-moz-place-container",
+             "children": [child]},
+            {"id": 2, "title": "Same", "type": "text/x-moz-place-container"},
+        ]
+
+        deduplicator_utils.directory_merge(bookmarks)
+
+        self.assertEqual(len(bookmarks), 1)
+        self.assertEqual(bookmarks[0]["id"], 1)
+        self.assertEqual(bookmarks[0]["children"], [child])
+
+    def test_merge_into_folder_without_children(self):
+        child = {"id": 3, "type": "text/x-moz-place", "uri": "https://example.com"}
+        bookmarks = [
+            {"id": 1, "title": "Same", "type": "text/x-moz-place-container"},
+            {"id": 2, "title": "Same", "type": "text/x-moz-place-container",
+             "children": [child]},
+        ]
+
+        deduplicator_utils.directory_merge(bookmarks)
+
+        self.assertEqual(len(bookmarks), 1)
+        self.assertEqual(bookmarks[0]["id"], 1)
+        self.assertEqual(bookmarks[0]["children"], [child])
     
 if __name__ == '__main__':
     unittest.main() 
