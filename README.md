@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/james-cube/firefox-bookmarks-deduplicator.svg?branch=master)](https://travis-ci.org/james-cube/firefox-bookmarks-deduplicator)
-
 # firefox-bookmarks-deduplicator
 
 Tool for cleaning up firefox bookmarks backups. Designed for people who don't want to do that using firefox plugins. My personal use case is merging and versioning backups from many computers, while not using cloud based solutions like Sync.
@@ -28,8 +26,6 @@ optional arguments:
   --output OUTPUT  Output file
 ```
 
-### My other tools 
+## Credits
 
-[Firefox Session Merger](https://github.com/james-cube/firefox-session-merger)
-
-[Firefox Bookmarks Merger](https://github.com/james-cube/firefox-bookmarks-merger)
+This is a fork of [firefox-bookmarks-deduplicator](https://github.com/james-cube/firefox-bookmarks-deduplicator), originally created by [james-cube](https://github.com/james-cube). Released under the MIT License, see `LICENSE`.
